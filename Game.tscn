@@ -1,3 +1,24 @@
-[gd_scene format=2]
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://lowpoly_scene.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player/Player.gd" type="Script" id=3]
+[ext_resource path="res://Assets/targetA.tscn" type="PackedScene" id=4]
 
 [node name="Game" type="Spatial"]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.258579, 0 )
+script = ExtResource( 3 )
+
+[node name="Pivot" type="Position3D" parent="Player"]
+
+[node name="Camera" type="Camera" parent="Player/Pivot"]
+transform = Transform( -5, 7.5904e-08, -4.30473e-07, 0, 4.92404, 0.868241, 4.37114e-07, 0.868241, -4.92404, 0, 5, -8 )
+current = true
+
+[node name="lowpoly_scene" parent="." instance=ExtResource( 2 )]
+
+[node name="Target_container" type="Spatial" parent="."]
+
+[node name="targetA" parent="Target_container" instance=ExtResource( 4 )]
